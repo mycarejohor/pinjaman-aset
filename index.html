@@ -625,10 +625,6 @@
               <label>Nama Penuh <span class="req">*</span></label>
               <input type="text" name="nama" placeholder="Contoh: Ahmad bin Abdullah" required />
             </div>
-            <div class="field">
-              <label>No. Kad Pengenalan <span class="req">*</span></label>
-              <input type="text" name="nokp" placeholder="Contoh: 900101-01-1234" maxlength="14" required />
-            </div>
             <div class="field full">
               <label>Alamat / Nama Organisasi <span class="req">*</span></label>
               <input type="text" name="alamat" placeholder="Contoh: Masjid Al-Hidayah, Skudai, Johor" required />
@@ -738,10 +734,6 @@
               <label>Nama Penuh <span class="req">*</span></label>
               <input type="text" name="nama" placeholder="Sama seperti semasa pinjaman" required />
             </div>
-            <div class="field">
-              <label>No. Kad Pengenalan <span class="req">*</span></label>
-              <input type="text" name="nokp" placeholder="Contoh: 900101-01-1234" maxlength="14" required />
-            </div>
           </div>
         </div>
       </div>
@@ -839,15 +831,7 @@
       if (tPulang.value && tPulang.value < tAmbil.value) tPulang.value = tAmbil.value;
     });
 
-    // No KP auto-format
-    document.querySelectorAll("input[name='nokp']").forEach(inp => {
-      inp.addEventListener("input", function () {
-        let v = this.value.replace(/\D/g, "");
-        if (v.length > 6) v = v.slice(0,6) + "-" + v.slice(6);
-        if (v.length > 9) v = v.slice(0,9) + "-" + v.slice(9,13);
-        this.value = v;
-      });
-    });
+
   })();
 
   // ─── Tab Switch ───
@@ -937,7 +921,6 @@
     const data = {
       type: "pinjaman",
       nama: this.nama.value.trim(),
-      nokp: this.nokp.value.trim(),
       alamat: this.alamat.value.trim(),
       jawatan: this.jawatan.value.trim(),
       emel: this.emel.value.trim(),
@@ -994,7 +977,6 @@
     const data = {
       type: "pemulangan",
       nama: this.nama.value.trim(),
-      nokp: this.nokp.value.trim(),
       aset: this.aset.value,
       tarikhPulang: this.tarikhPulang.value,
       keadaan: keadaanChecked.value,
